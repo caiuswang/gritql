@@ -16,6 +16,7 @@ use crate::{
     markdown_block::MarkdownBlock,
     markdown_inline::MarkdownInline,
     php::Php,
+    xml::Xml,
     php_only::PhpOnly,
     python::Python,
     ruby::Ruby,
@@ -77,6 +78,7 @@ pub enum PatternLanguage {
     Toml,
     Php,
     PhpOnly,
+    Xml,
     Universal,
 }
 
@@ -108,6 +110,7 @@ impl fmt::Display for PatternLanguage {
             PatternLanguage::Universal => write!(f, "universal"),
             PatternLanguage::Php => write!(f, "php"),
             PatternLanguage::PhpOnly => write!(f, "php"),
+            PatternLanguage::Xml => write!(f, "xml"),
         }
     }
 }
@@ -144,6 +147,7 @@ impl ValueEnum for PatternLanguage {
             Self::Toml,
             Self::Php,
             Self::PhpOnly,
+            Self::Xml,
         ]
     }
 
@@ -253,6 +257,7 @@ impl PatternLanguage {
                 Some("only") => Some(Self::PhpOnly),
                 _ => Some(Self::Php),
             },
+            "xml" => Some(Self::Xml),
             "universal" => Some(Self::Universal),
             _ => None,
         };
@@ -313,6 +318,7 @@ impl PatternLanguage {
             PatternLanguage::Toml => &["toml"],
             PatternLanguage::Php => &["php", "phps", "phar", "phtml", "pht"],
             PatternLanguage::PhpOnly => &["php", "phps", "phar", "phtml", "pht"],
+            PatternLanguage::Xml=> &["xml"],
             PatternLanguage::Universal => &[],
         }
     }
@@ -343,6 +349,7 @@ impl PatternLanguage {
             PatternLanguage::Toml => Some("toml"),
             PatternLanguage::Php => Some("php"),
             PatternLanguage::PhpOnly => Some("php"),
+            PatternLanguage::Xml=> Some("xml"),
             PatternLanguage::Universal => None,
         }
     }
@@ -369,6 +376,7 @@ impl PatternLanguage {
             "yaml" | "yml" => Some(Self::Yaml),
             "sql" => Some(Self::Sql),
             "vue" => Some(Self::Vue),
+            "xml" => Some(Self::Xml),
             "php" | "phps" | "phtml" | "pht" => Some(Self::Php),
             _ => None,
         }
@@ -420,6 +428,7 @@ impl PatternLanguage {
             PatternLanguage::Toml => Ok(TargetLanguage::Toml(Toml::new(Some(lang)))),
             PatternLanguage::Php => Ok(TargetLanguage::Php(Php::new(Some(lang)))),
             PatternLanguage::PhpOnly => Ok(TargetLanguage::PhpOnly(PhpOnly::new(Some(lang)))),
+            PatternLanguage::Xml=> Ok(TargetLanguage::Xml(Xml::new(Some(lang)))),
             PatternLanguage::Universal => Err(anyhow::anyhow!(
                 "Cannot convert universal to TSLang".to_string()
             )),
@@ -775,7 +784,8 @@ generate_target_language! {
     Toml,
     Sql,
     Php,
-    PhpOnly
+    PhpOnly,
+    Xml
 }
 
 impl fmt::Display for TargetLanguage {
@@ -805,6 +815,7 @@ impl fmt::Display for TargetLanguage {
             TargetLanguage::Toml(_) => write!(f, "toml"),
             TargetLanguage::Php(_) => write!(f, "php"),
             TargetLanguage::PhpOnly(_) => write!(f, "php"),
+            TargetLanguage::Xml(_) => write!(f, "xml"),
         }
     }
 }
@@ -857,6 +868,7 @@ impl TargetLanguage {
             TargetLanguage::Html(_)
             | TargetLanguage::Vue(_)
             | TargetLanguage::MarkdownBlock(_)
+            | TargetLanguage::Xml(_)
             | TargetLanguage::MarkdownInline(_) => Regex::new(r"<!--\s*(.*?)\s*-->").unwrap(),
             TargetLanguage::Css(_) => Regex::new(r"/\*\s*(.*?)\s*\*/").unwrap(),
             TargetLanguage::Sql(_) => Regex::new(r"--\s*(.*)").unwrap(),

@@ -51,6 +51,7 @@ static VUE_LANGUAGE: OnceLock<TSLanguage> = OnceLock::new();
 static TOML_LANGUAGE: OnceLock<TSLanguage> = OnceLock::new();
 static PHP_LANGUAGE: OnceLock<TSLanguage> = OnceLock::new();
 static PHP_ONLY_LANGUAGE: OnceLock<TSLanguage> = OnceLock::new();
+static XML_LANGUAGE: OnceLock<TSLanguage> = OnceLock::new();
 
 pub use marzano_core::UncompiledPatternBuilder;
 
@@ -486,6 +487,7 @@ fn pattern_language_to_path(lang: &PatternLanguage) -> anyhow::Result<String> {
         PatternLanguage::Toml => Ok("/tree-sitter-toml.wasm"),
         PatternLanguage::Php => Ok("/tree-sitter-php.wasm"),
         PatternLanguage::PhpOnly => Ok("/tree-sitter-php_only.wasm"),
+        PatternLanguage::Xml=> Ok("/tree-sitter-xml.wasm"),
         PatternLanguage::Universal => Err(anyhow::anyhow!("Universal does not have a parser")),
     }?;
     let final_file = format!("{}{}", get_parser_path(), wasm_file);
@@ -532,6 +534,7 @@ fn get_lang_store(language: &PatternLanguage) -> anyhow::Result<&'static OnceLoc
         PatternLanguage::Toml => Ok(&TOML_LANGUAGE),
         PatternLanguage::Php => Ok(&PHP_LANGUAGE),
         PatternLanguage::PhpOnly => Ok(&PHP_ONLY_LANGUAGE),
+        PatternLanguage::Xml=> Ok(&XML_LANGUAGE),
         PatternLanguage::Universal => Err(anyhow::anyhow!("Universal does not have a parser")),
     }
 }

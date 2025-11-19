@@ -68,3 +68,7 @@
 [submodule "resources/language-submodules/tree-sitter-kotlin"]
 	path = resources/language-submodules/tree-sitter-kotlin
 	url = https://github.com/fwcd/tree-sitter-kotlin
+[submodule "resources/language-submodules/tree-sitter-xml"]
+	path = resources/language-submodules/tree-sitter-xml
+	url = git@github.com:caiuswang/tree-sitter-xml.git
+    branch = v0.20.8

@@ -62,6 +62,7 @@ const allLanguages = [
   "typescript",
   "vue",
   "yaml",
+  "xml"
 ];
 
 // For these languages, copyMvGrammar is optional
@@ -420,6 +421,43 @@ async function buildLanguage(language) {
         `../crates/wasm-bindings/wasm_parsers/tree-sitter-php.wasm`
       )
     );
+  } else if (language === "xml") {
+    //xml has sub-grammars
+    await Promise.all([
+      // copyMvGrammar("xml", "common"),
+      copyMvGrammar("xml", "xml/xml"),
+      // copyMvGrammar("xml", "xml/dtd"),
+    ]);
+    await Promise.all([
+      treeSitterGenerate("xml/xml"),
+      // treeSitterGenerate("xml/dtd"),
+    ]);
+    await Promise.all([
+      copyNodeTypes("xml/xml", "xml"),
+      // copyNodeTypes("xml/dtd", `dtd`),
+    ]);
+
+    await fs.rename(
+      path.join(
+        LANGUAGE_METAVARIABLES_DIR,
+        `tree-sitter-xml/xml/tree-sitter-xml.wasm`
+      ),
+      path.join(
+        resourceDir,
+        `../crates/wasm-bindings/wasm_parsers/tree-sitter-xml.wasm`
+      )
+    );
+
+    // await fs.rename(
+    //   path.join(
+    //     LANGUAGE_METAVARIABLES_DIR,
+    //     `tree-sitter-xml/dtd/tree-sitter-dtd.wasm`
+    //   ),
+    //   path.join(
+    //     resourceDir,
+    //     `../crates/wasm-bindings/wasm_parsers/tree-sitter-dtd.wasm`
+    //   )
+    // );
   } else {
     await buildSimpleLanguage(log, language);
   }
