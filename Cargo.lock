@@ -2671,6 +2671,7 @@ dependencies = [
  "tree-sitter-toml",
  "tree-sitter-typescript",
  "tree-sitter-vue",
+ "tree-sitter-xml",
  "tree-sitter-yaml",
  "trim-margin",
  "web-sys",
@@ -4902,6 +4903,14 @@ dependencies = [
 [[package]]
 name = "tree-sitter-vue"
 version = "0.0.1"
+dependencies = [
+ "cc",
+ "tree-sitter",
+]
+
+[[package]]
+name = "tree-sitter-xml"
+version = "0.7.0"
 dependencies = [
  "cc",
  "tree-sitter",
