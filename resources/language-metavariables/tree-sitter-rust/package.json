@@ -1,50 +1,64 @@
 {
   "name": "tree-sitter-rust",
-  "version": "0.20.4",
+  "version": "0.24.0",
   "description": "Rust grammar for tree-sitter",
+  "repository": "https://github.com/tree-sitter/tree-sitter-rust",
+  "license": "MIT",
+  "author": {
+    "name": "Maxim Sokolov",
+    "email": "maxim0xff@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Max Brunsfeld",
+      "email": "maxbrunsfeld@gmail.com"
+    },
+    {
+      "name": "Amaan Qureshi",
+      "email": "amaanq12@gmail.com"
+    }
+  ],
   "main": "bindings/node",
+  "types": "bindings/node",
   "keywords": [
-    "parser",
+    "incremental",
+    "parsing",
+    "tree-sitter",
     "rust"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tree-sitter/tree-sitter-rust.git"
-  },
-  "author": "Maxim Sokolov <maxim0xff@gmail.com> (https://github.com/MaximSokolov)",
-  "license": "MIT",
+  "files": [
+    "grammar.js",
+    "tree-sitter.json",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**",
+    "*.wasm"
+  ],
   "dependencies": {
-    "nan": "^2.17.0"
+    "node-addon-api": "^8.2.2",
+    "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
-    "eslint-config-google": "^0.14.0",
-    "tree-sitter-cli": "^0.20.8"
+    "eslint": "^9.15.0",
+    "eslint-config-treesitter": "^1.0.2",
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.24.4"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.25.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
   },
   "scripts": {
-    "build": "tree-sitter generate && node-gyp build",
-    "build-wasm": "tree-sitter build-wasm",
+    "install": "node-gyp-build",
     "lint": "eslint grammar.js",
-    "parse": "tree-sitter parse",
-    "test": "tree-sitter test && script/parse-examples",
-    "test-windows": "tree-sitter test"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.rust",
-      "injection-regex": "rust",
-      "file-types": [
-        "rs"
-      ],
-      "highlights": [
-        "queries/highlights.scm"
-      ],
-      "injections": [
-        "queries/injections.scm"
-      ],
-      "tags": [
-        "queries/tags.scm"
-      ]
-    }
-  ]
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tree-sitter-solidity"
+description = "Solidity grammar for tree-sitter"
+version = "1.2.13"
+keywords = ["incremental", "parsing", "tree-sitter", "solidity"]
+classifiers = [
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Software Development :: Compilers",
+  "Topic :: Text Processing :: Linguistic",
+  "Typing :: Typed"
+]
+requires-python = ">=3.9"
+license.text = "MIT"
+readme = "README.md"
+authors = [
+  { name = "Joran Honig" }
+]
+
+[project.urls]
+Homepage = "https://github.com/JoranHonig/tree-sitter-solidity"
+
+[project.optional-dependencies]
+core = ["tree-sitter~=0.22"]
+
+[tool.cibuildwheel]
+build = "cp39-*"
+build-frontend = "build"

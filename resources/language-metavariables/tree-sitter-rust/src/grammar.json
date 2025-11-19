@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "rust",
   "word": "_primitive_identifier",
   "rules": {
@@ -8230,7 +8231,7 @@
                           },
                           {
                             "type": "PATTERN",
-                            "value": "u{[0-9a-fA-F]+}"
+                            "value": "u\\{[0-9a-fA-F]+\\}"
                           },
                           {
                             "type": "PATTERN",
@@ -8280,7 +8281,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "u{[0-9a-fA-F]+}"
+                "value": "u\\{[0-9a-fA-F]+\\}"
               },
               {
                 "type": "PATTERN",
@@ -8669,6 +8670,6 @@
     "_literal_pattern",
     "_declaration_statement",
     "pattern"
-  ]
+  ],
+  "reserved": {}
 }
-

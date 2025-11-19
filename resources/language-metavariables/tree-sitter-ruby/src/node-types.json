@@ -2096,16 +2096,6 @@
     "type": "element_reference",
     "named": true,
     "fields": {
-      "expression": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "_expression",
-            "named": true
-          }
-        ]
-      },
       "object": {
         "multiple": false,
         "required": true,
@@ -2509,6 +2499,7 @@
   {
     "type": "heredoc_body",
     "named": true,
+    "extra": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -3375,6 +3366,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {
       "statement": {
         "multiple": true,
@@ -3562,10 +3554,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "_arg",
-            "named": true
-          },
           {
             "type": "_statement",
             "named": true
@@ -4555,10 +4543,6 @@
     "named": false
   },
   {
-    "type": "__END__",
-    "named": false
-  },
-  {
     "type": "`",
     "named": false
   },
@@ -4608,7 +4592,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "def",

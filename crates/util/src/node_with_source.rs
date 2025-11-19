@@ -1,6 +1,6 @@
 use super::cursor_wrapper::CursorWrapper;
 use grit_util::{error::GritResult, AstCursor, AstNode, ByteRange, CodeRange, Position, Range};
-use std::{borrow::Cow, ptr};
+use std::{borrow::Cow, num::{NonZeroU16}, ptr};
 use tree_sitter::Node;
 
 /// A TreeSitter node, including a reference to the source code from which it
@@ -37,8 +37,8 @@ impl<'a> NodeWithSource<'a> {
             .node
             .language()
             .field_id_for_name(field_name)
-            .unwrap_or_default();
-        self.children_by_field_id(field_id)
+            .unwrap_or(NonZeroU16::MAX);
+        self.children_by_field_id(field_id.get())
     }
 
     pub fn named_children(&self) -> impl Iterator<Item = Self> {
@@ -54,8 +54,8 @@ impl<'a> NodeWithSource<'a> {
             .node
             .language()
             .field_id_for_name(field_name)
-            .unwrap_or_default();
-        self.named_children_by_field_id(field_id)
+            .unwrap_or(NonZeroU16::MAX);
+        self.named_children_by_field_id(field_id.get())
     }
 
     pub fn range(&self) -> Range {
@@ -235,7 +235,7 @@ impl<'a> Iterator for ChildrenByFieldIterator<'a> {
 
     fn next(&mut self) -> Option<Self::Item> {
         let c = self.cursor.as_mut()?;
-        while c.field_id() != Some(self.field_id) {
+        while c.field_id() != Some(NonZeroU16::new(self.field_id).unwrap()) {
             if !c.goto_next_sibling() {
                 self.cursor = None;
                 return None;

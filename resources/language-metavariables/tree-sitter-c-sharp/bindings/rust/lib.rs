@@ -1,70 +1,53 @@
-// -*- coding: utf-8 -*-
-// ------------------------------------------------------------------------------------------------
-// Copyright © 2020, tree-sitter-c-sharp authors.
-// See the LICENSE file in this repo for license details.
-// ------------------------------------------------------------------------------------------------
-
-//! This crate provides a C# grammar for the [tree-sitter][] parsing library.
+//! This crate provides CSharp language support for the [tree-sitter][] parsing library.
 //!
-//! Typically, you will use the [language][language func] function to add this grammar to a
+//! Typically, you will use the [LANGUAGE][] constant to add this language to a
 //! tree-sitter [Parser][], and then use the parser to parse some code:
 //!
 //! ```
-//! use tree_sitter::Parser;
-//!
 //! let code = r#"
-//!     class Test {
-//!         int double(int x) => x * 2;
-//!     }
 //! "#;
-//! let mut parser = Parser::new();
-//! parser.set_language(tree_sitter_c_sharp::language()).expect("Error loading C# grammar");
-//! let parsed = parser.parse(code, None);
-//! # let parsed = parsed.unwrap();
-//! # let root = parsed.root_node();
-//! # assert!(!root.has_error());
+//! let mut parser = tree_sitter::Parser::new();
+//! let language = tree_sitter_c_sharp::LANGUAGE;
+//! parser
+//!     .set_language(&language.into())
+//!     .expect("Error loading C# parser");
+//! let tree = parser.parse(code, None).unwrap();
+//! assert!(!tree.root_node().has_error());
 //! ```
 //!
-//! [Language]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Language.html
-//! [language func]: fn.language.html
 //! [Parser]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Parser.html
 //! [tree-sitter]: https://tree-sitter.github.io/
 
-use tree_sitter::Language;
+use tree_sitter_language::LanguageFn;
 
 extern "C" {
-    fn tree_sitter_c_sharp() -> Language;
+    fn tree_sitter_c_sharp() -> *const ();
 }
 
-/// Returns the tree-sitter [Language][] for this grammar.
+/// The tree-sitter [`LanguageFn`][LanguageFn] for this grammar.
 ///
-/// [Language]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Language.html
-pub fn language() -> Language {
-    unsafe { tree_sitter_c_sharp() }
-}
-
-/// The source of the C# tree-sitter grammar description.
-pub const GRAMMAR: &'static str = include_str!("../../grammar.js");
+/// [LanguageFn]: https://docs.rs/tree-sitter-language/*/tree_sitter_language/struct.LanguageFn.html
+pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_c_sharp) };
 
 /// The content of the [`node-types.json`][] file for this grammar.
 ///
 /// [`node-types.json`]: https://tree-sitter.github.io/tree-sitter/using-parsers#static-node-types
-pub const NODE_TYPES: &'static str = include_str!("../../src/node-types.json");
+pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 
 // NOTE: uncomment these to include any queries that this grammar contains:
 
-// pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
+pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
 // pub const INJECTIONS_QUERY: &str = include_str!("../../queries/injections.scm");
 // pub const LOCALS_QUERY: &str = include_str!("../../queries/locals.scm");
-// pub const TAGS_QUERY: &str = include_str!("../../queries/tags.scm");
+pub const TAGS_QUERY: &str = include_str!("../../queries/tags.scm");
 
 #[cfg(test)]
 mod tests {
     #[test]
-    fn can_load_grammar() {
+    fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
-            .set_language(super::language())
-            .expect("Error loading C# grammar");
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading C# parser");
     }
 }

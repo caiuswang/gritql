@@ -1031,6 +1031,7 @@
   {
     "type": "comment",
     "named": true,
+    "extra": true,
     "fields": {}
   },
   {
@@ -2851,6 +2852,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {
       "hash_bang": {
         "multiple": false,
@@ -3887,7 +3889,8 @@
   },
   {
     "type": "html_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "if",

@@ -26,7 +26,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_typescript::language_tsx().into()
+    TSLanguage::from(tree_sitter_typescript::LANGUAGE_TSX)
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -335,7 +335,7 @@ mod tests {
         let snippet = "const stdlib = { $activities } as const";
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -346,7 +346,7 @@ mod tests {
         let snippet = "const stdlib = [$old] as const";
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -357,7 +357,7 @@ mod tests {
         let snippet = r#"import $legacy_image from "next/legacy/image""#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -369,7 +369,7 @@ mod tests {
         let snippet = "if ($cond) { $cond_true }";
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -380,7 +380,7 @@ mod tests {
         let snippet = "as";
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -391,7 +391,7 @@ mod tests {
         let snippet = r#"`foo ${bar}`"#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -402,7 +402,7 @@ mod tests {
         let snippet = r#"extends Component"#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -413,7 +413,7 @@ mod tests {
         let snippet = r#"!$x.length"#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         println!("{:#?}", nodes);
@@ -425,7 +425,7 @@ mod tests {
         let snippet = r#"=="#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());
@@ -436,7 +436,7 @@ mod tests {
         let snippet = r#"Symbol = $_"#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         println!("{:#?}", nodes);
@@ -448,7 +448,7 @@ mod tests {
         let snippet = r#"showingCount?: boolean"#;
         let lang = Tsx::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         println!("{:#?}", nodes);

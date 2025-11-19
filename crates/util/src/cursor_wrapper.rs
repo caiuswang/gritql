@@ -1,3 +1,5 @@
+use std::num::NonZeroU16;
+
 use crate::node_with_source::NodeWithSource;
 use grit_util::AstCursor;
 use tree_sitter::TreeCursor;
@@ -13,7 +15,7 @@ impl<'a> CursorWrapper<'a> {
         Self { cursor, source }
     }
 
-    pub(crate) fn field_id(&self) -> Option<u16> {
+    pub(crate) fn field_id(&self) -> Option<NonZeroU16> {
         self.cursor.field_id()
     }
 }

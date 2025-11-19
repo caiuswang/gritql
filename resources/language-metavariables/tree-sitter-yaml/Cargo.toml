@@ -1,27 +1,35 @@
 [package]
 name = "tree-sitter-yaml"
 description = "YAML grammar for tree-sitter"
-version = "0.6.1"
+version = "0.7.2"
+authors = ["Ika <ikatyang@gmail.com>", "Amaan Qureshi <amaanq12@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "yaml"]
-categories = ["parsing", "text-editors"]
-authors = [
-  "Ika <ikatyang@gmail.com>",
-  "Amaan Qureshi <amaanq12@gmail.com>"
-]
+categories = ["parser-implementations", "parsing", "text-editors"]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-yaml"
 edition = "2021"
 autoexamples = false
 
 build = "bindings/rust/build.rs"
-include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*"]
+include = [
+  "bindings/rust/*",
+  "grammar.js",
+  "queries/*",
+  "src/*",
+  "tree-sitter.json",
+  "/LICENSE",
+]
 
 [lib]
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "~0.20"
+tree-sitter-language = "0.1"
+tree-sitter = "0.25.10"
 
 [build-dependencies]
-cc = "1.0.92"
+cc = "1.2"
+
+[dev-dependencies]
+tree-sitter = "0.25.10"

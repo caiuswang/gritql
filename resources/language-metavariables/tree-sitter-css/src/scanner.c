@@ -16,8 +16,6 @@ void *tree_sitter_css_external_scanner_create() { return NULL; }
 
 void tree_sitter_css_external_scanner_destroy(void *payload) {}
 
-void tree_sitter_css_external_scanner_reset(void *payload) {}
-
 unsigned tree_sitter_css_external_scanner_serialize(void *payload, char *buffer) { return 0; }
 
 void tree_sitter_css_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {}
@@ -30,9 +28,9 @@ bool tree_sitter_css_external_scanner_scan(void *payload, TSLexer *lexer, const 
     if (iswspace(lexer->lookahead) && valid_symbols[DESCENDANT_OP]) {
         lexer->result_symbol = DESCENDANT_OP;
 
-        lexer->advance(lexer, true);
+        skip(lexer);
         while (iswspace(lexer->lookahead)) {
-            lexer->advance(lexer, true);
+            skip(lexer);
         }
         lexer->mark_end(lexer);
 
@@ -42,7 +40,7 @@ bool tree_sitter_css_external_scanner_scan(void *payload, TSLexer *lexer, const 
         }
 
         if (lexer->lookahead == ':') {
-            lexer->advance(lexer, false);
+            advance(lexer);
             if (iswspace(lexer->lookahead)) {
                 return false;
             }
@@ -53,14 +51,14 @@ bool tree_sitter_css_external_scanner_scan(void *payload, TSLexer *lexer, const 
                 if (lexer->lookahead == '{') {
                     return true;
                 }
-                lexer->advance(lexer, false);
+                advance(lexer);
             }
         }
     }
 
     if (valid_symbols[PSEUDO_CLASS_SELECTOR_COLON]) {
         while (iswspace(lexer->lookahead)) {
-            lexer->advance(lexer, true);
+            skip(lexer);
         }
         if (lexer->lookahead == ':') {
             advance(lexer);
@@ -68,15 +66,33 @@ bool tree_sitter_css_external_scanner_scan(void *payload, TSLexer *lexer, const 
                 return false;
             }
             lexer->mark_end(lexer);
-            // We need a { to be a pseudo class selector, a ; indicates a property
+            lexer->result_symbol = PSEUDO_CLASS_SELECTOR_COLON;
+
+            // We need a `{` to be a pseudo class selector, a `;` indicates a property.
+            // This does not apply if we're in a comment, however.
+            bool in_comment = false;
             while (lexer->lookahead != ';' && lexer->lookahead != '}' && !lexer->eof(lexer)) {
                 advance(lexer);
-                if (lexer->lookahead == '{') {
-                    lexer->result_symbol = PSEUDO_CLASS_SELECTOR_COLON;
+                if (lexer->lookahead == '{' && !in_comment) {
                     return true;
                 }
+                if (lexer->lookahead == '/' && !in_comment) {
+                    advance(lexer);
+                    if (lexer->lookahead == '*') {
+                        in_comment = true;
+                    }
+                } else if (lexer->lookahead == '*' && in_comment) {
+                    advance(lexer);
+                    if (lexer->lookahead == '/') {
+                        in_comment = false;
+                    }
+                }
             }
-            return false;
+
+            // If we're at eof, and we happened to *not* find an opening brace to indicate we have a pseudo class
+            // selector, we should *still* return one at EOF. This will improve error recovery, and the malformed code
+            // can be parsed as an erroneous pseudo-class selector, rather than an erroneous property.
+            return lexer->eof(lexer);
         }
     }
 

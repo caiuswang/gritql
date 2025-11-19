@@ -1,7 +1,15 @@
 # tree-sitter-markdown
-A markdown parser for [tree-sitter].
 
-![](https://github.com/MDeiml/tree-sitter-markdown/blob/split_parser/contrib/screenshot.png)
+[![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-markdown/actions)
+[![discord][discord]](https://discord.gg/w7nTvsVJhm)
+[![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
+[![npm][npm]](https://www.npmjs.com/package/@tree-sitter-grammars/tree-sitter-markdown)
+[![crates][crates]](https://crates.io/crates/tree-sitter-md)
+[![pypi][pypi]](https://pypi.org/project/tree-sitter-markdown/)
+
+A Markdown parser for [tree-sitter].
+
+![screenshot](https://github.com/MDeiml/tree-sitter-markdown/blob/split_parser/.github/screenshot.png)
 
 The parser is designed to read markdown according to the [CommonMark Spec],
 but some extensions to the spec from different sources such as [Github flavored
@@ -11,7 +19,7 @@ For specifics see [Extensions](#extensions)
 ## Goals
 
 Even though this parser has existed for some while and obvious issues are
-mostly solved, there are still lots of inaccuarcies in the output. These stem
+mostly solved, there are still lots of inaccuracies in the output. These stem
 from restricting a complex format such as markdown to the quite restricting
 tree-sitter parsing rules.
 
@@ -66,3 +74,9 @@ Unfortunately using this parser with WASM/web-tree-sitter does not work out of t
 [neovim]: https://neovim.io/
 [helix]: https://helix-editor.com/
 [CONTRIBUTING.md]: https://github.com/MDeiml/tree-sitter-markdown/blob/split_parser/CONTRIBUTING.md
+[ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-markdown/ci.yml?logo=github&label=CI
+[discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
+[matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
+[npm]: https://img.shields.io/npm/v/%40tree-sitter-grammars%2Ftree-sitter-markdown?logo=npm
+[crates]: https://img.shields.io/crates/v/tree-sitter-md?logo=rust
+[pypi]: https://img.shields.io/pypi/v/tree-sitter-markdown?logo=pypi&logoColor=ffd242

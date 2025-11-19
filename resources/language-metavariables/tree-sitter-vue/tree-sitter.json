@@ -1,0 +1,39 @@
+{
+  "grammars": [
+    {
+      "name": "vuew",
+      "camelcase": "vue",
+      "title": "Vue",
+      "scope": "text.vue.basic",
+      "file-types": [
+        "vue"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^vuew$"
+    }
+  ],
+  "metadata": {
+    "version": "0.2.1",
+    "license": "MIT",
+    "description": "Vue grammar for tree-sitter",
+    "authors": [
+      {
+          "name": "Ika",
+          "email": "ikatyang@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/ikatyang/tree-sitter-vue",
+      "funding": "https://github.com/sponsors/tree-sitter"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
+

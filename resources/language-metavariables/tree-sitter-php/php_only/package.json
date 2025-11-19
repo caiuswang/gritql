@@ -1,17 +1,9 @@
 {
   "main": "../bindings/node/php_only",
-  "tree-sitter": [
-    {
-      "scope": "source.php",
-      "file-types": [
-        "php"
-      ],
-      "highlights": "../queries/highlights.scm",
-      "injections": "../queries/injections.scm",
-      "tags": "../queries/tags.scm",
-      "external-files": [
-        "../common/scanner.h"
-      ]
-    }
-  ]
+  "private": true,
+  "scripts": {
+    "build": "tree-sitter generate",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground"
+  }
 }

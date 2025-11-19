@@ -1303,6 +1303,7 @@
   {
     "type": "inline",
     "named": true,
+    "root": true,
     "fields": {
       "content": {
         "multiple": true,
@@ -2252,7 +2253,7 @@
     "fields": {
       "link": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "!",
@@ -2404,16 +2405,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "word",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2651,16 +2642,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "word",
-          "named": true
-        }
-      ]
     }
   },
   {

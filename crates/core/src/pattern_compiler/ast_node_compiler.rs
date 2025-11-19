@@ -89,7 +89,7 @@ impl AstNodeCompiler {
                     }
                 })?;
 
-            let field = node_fields.iter().find(|f| f.id() == id).ok_or_else(|| {
+            let field = node_fields.iter().find(|f| f.id() == id.get()).ok_or_else(|| {
                 let node_sort = &context
                     .compilation
                     .lang
@@ -115,7 +115,7 @@ impl AstNodeCompiler {
             })?;
 
             let pattern = ListCompiler::from_node_in_context(&node, field, context, is_rhs)?;
-            args.push((id, field.multiple(), pattern));
+            args.push((id.get(), field.multiple(), pattern));
         }
         if args.len() != args.iter().unique_by(|a| a.0).count() {
             return Err(anyhow!("duplicate field in node"));

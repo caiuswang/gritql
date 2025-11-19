@@ -11247,6 +11247,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {
       "statements": {
         "multiple": true,
@@ -14937,7 +14938,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "dollar_quote",
@@ -14945,10 +14947,6 @@
   },
   {
     "type": "grit_metavariable",
-    "named": true
-  },
-  {
-    "type": "kewyord_using_nls_comp",
     "named": true
   },
   {
@@ -15129,10 +15127,6 @@
   },
   {
     "type": "keyword_collate",
-    "named": true
-  },
-  {
-    "type": "keyword_collation",
     "named": true
   },
   {
@@ -15800,10 +15794,6 @@
     "named": true
   },
   {
-    "type": "keyword_options",
-    "named": true
-  },
-  {
     "type": "keyword_or",
     "named": true
   },
@@ -16369,7 +16359,8 @@
   },
   {
     "type": "marginalia",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "op_other",

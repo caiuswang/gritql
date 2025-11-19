@@ -134,11 +134,19 @@ pub(crate) fn kind_and_field_id_for_field_map(
     names
         .into_iter()
         .map(|(kind, field, val)| {
+            let filed_id = lang.field_id_for_name(field);
+            let id : u16;
+            if filed_id.is_none() {
+                id = 0;
+            } else {
+                id = filed_id.unwrap().get();
+            }
             (
                 lang.id_for_node_kind(kind, true),
-                lang.field_id_for_name(field)
-                    .context(format!("Field {} not found", field))
-                    .unwrap(),
+                // lang.field_id_for_name(field)
+                //     .context(format!("Field {} not found", field))
+                //     .unwrap().get(),
+                id,
                 val,
             )
         })
@@ -241,7 +249,7 @@ impl MarzanoParser {
     pub fn new<'a>(lang: &impl MarzanoLanguage<'a>) -> Self {
         let mut parser = TSParser::new().unwrap();
         parser
-            .set_language(lang.get_ts_language())
+            .set_language(lang.get_ts_language().clone())
             .expect("failed to set TreeSitter language");
         Self { parser }
     }
@@ -640,10 +648,13 @@ pub fn fields_for_nodes(language: &TSLanguage, types: &str) -> Vec<Vec<Field>> {
         let mut field_ids = vec![];
         if let Some(fields) = node.get("fields") {
             for (field_name, value) in fields.as_object().unwrap() {
-                let field_id = language.field_id_for_name(field_name).unwrap();
+                let field_id = language.field_id_for_name(field_name);
+                if field_id == None {
+                    continue;
+                }
                 let required = value.get("required").unwrap().as_bool().unwrap();
                 let multiple = value.get("multiple").unwrap().as_bool().unwrap();
-                let field = Field::new(field_name.to_owned(), field_id, required, multiple);
+                let field = Field::new(field_name.to_owned(), field_id.unwrap().get(), required, multiple);
                 field_ids.push(field);
             }
         }

@@ -17,7 +17,8 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_vue::language().into()
+    // TSLanguage::from(tree_sitter_vue::language())
+    todo!()
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -135,7 +136,7 @@ pub(crate) fn get_vue_ranges(
     let vue = Vue::new(None);
     let mut parser = Parser::new()?;
     let text = file.as_bytes();
-    parser.set_language(vue.get_ts_language())?;
+    parser.set_language(vue.get_ts_language().clone())?;
     let tree = parser.parse(file, None)?.ok_or(anyhow!("missing tree"))?;
     let cursor = tree.walk();
     let mut ranges = Vec::new();

@@ -107,7 +107,7 @@ const PREC = {
         optional(
           choice(
             seq(/__END__[\r\n]/, $.uninterpreted),
-            seq('__END__', alias('', $.uninterpreted)),
+            // seq('__END__', alias('', $.uninterpreted)),
           ),
         ),
       ),

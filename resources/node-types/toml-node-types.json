@@ -136,6 +136,7 @@
   {
     "type": "document",
     "named": true,
+    "root": true,
     "fields": {
       "pair": {
         "multiple": true,
@@ -466,7 +467,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "escape_sequence",

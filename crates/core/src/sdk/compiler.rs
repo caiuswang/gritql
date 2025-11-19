@@ -104,10 +104,10 @@ impl StatelessCompilerContext {
 
             let field = node_fields
                 .iter()
-                .find(|f| f.id() == field_id)
+                .find(|f| f.id() == field_id.get())
                 .ok_or_else(|| anyhow!("field {} not found in node type {}", name, node_sort))?;
 
-            args.push((field_id, field.multiple(), pattern));
+            args.push((field_id.get(), field.multiple(), pattern));
         }
 
         // Check for duplicate fields

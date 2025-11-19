@@ -2206,6 +2206,7 @@
   {
     "type": "stylesheet",
     "named": true,
+    "root": true,
     "fields": {
       "items": {
         "multiple": true,
@@ -2459,7 +2460,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "contains_equal",

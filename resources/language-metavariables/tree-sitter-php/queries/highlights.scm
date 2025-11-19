@@ -1,12 +1,11 @@
 [
   (php_tag)
-  "?>"
+  (php_end_tag)
 ] @tag
 
 ; Keywords
 
 [
-  "abstract"
   "and"
   "as"
   "break"
@@ -31,7 +30,6 @@
   "enum"
   "exit"
   "extends"
-  "final"
   "finally"
   "fn"
   "for"
@@ -51,10 +49,6 @@
   "new"
   "or"
   "print"
-  "private"
-  "protected"
-  "public"
-  "readonly"
   "require"
   "require_once"
   "return"
@@ -66,11 +60,52 @@
   "while"
   "xor"
   "yield"
+  "yield from"
+  (abstract_modifier)
+  (final_modifier)
+  (readonly_modifier)
   (static_modifier)
+  (visibility_modifier)
 ] @keyword
 
-(yield_expression "from" @keyword)
 (function_static_declaration "static" @keyword)
+
+; Namespace
+
+(namespace_definition
+  name: (namespace_name
+    (name) @module))
+
+(namespace_name
+  (name) @module)
+
+(namespace_use_clause
+  [
+    (name) @type
+    (qualified_name
+      (name) @type)
+    alias: (name) @type
+  ])
+
+(namespace_use_clause
+  type: "function"
+  [
+    (name) @function
+    (qualified_name
+      (name) @function)
+    alias: (name) @function
+  ])
+
+(namespace_use_clause
+  type: "const"
+  [
+    (name) @constant
+    (qualified_name
+      (name) @constant)
+    alias: (name) @constant
+  ])
+
+(relative_name "namespace" @module.builtin)
 
 ; Variables
 
@@ -84,6 +119,7 @@
 (object_creation_expression [
   (name) @constructor
   (qualified_name (name) @constructor)
+  (relative_name (name) @constructor)
 ])
 
 ((name) @constant
@@ -99,9 +135,17 @@
 (named_type [
   (name) @type
   (qualified_name (name) @type)
+  (relative_name (name) @type)
 ]) @type
 (named_type (name) @type.builtin
   (#any-of? @type.builtin "static" "self"))
+
+(scoped_call_expression
+  scope: [
+    (name) @type
+    (qualified_name (name) @type)
+    (relative_name (name) @type)
+  ])
 
 ; Functions
 
@@ -113,7 +157,11 @@
   name: (name) @function.method)
 
 (function_call_expression
-  function: [(qualified_name (name)) (name)] @function)
+  function: [
+    (qualified_name (name))
+    (relative_name (name))
+    (name)
+  ] @function)
 
 (scoped_call_expression
   name: (name) @function)
@@ -137,7 +185,7 @@
 ; Basic tokens
 [
   (string)
-  (string_value)
+  (string_content)
   (encapsed_string)
   (heredoc)
   (heredoc_body)

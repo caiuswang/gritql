@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "yaml",
   "rules": {
     "stream": {
@@ -6790,5 +6791,6 @@
     "_hidden_br_flw_njl_val_flw",
     "_hidden_r_sgl_flw_njl_val_flw"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

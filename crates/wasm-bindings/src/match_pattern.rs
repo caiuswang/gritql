@@ -396,7 +396,7 @@ fn get_parser_path() -> String {
 async fn setup_language_parser(lang: PatternLanguage) -> anyhow::Result<TSParser> {
     let mut parser = TSParser::new()?;
     let lang = get_cached_lang(&lang).await?;
-    parser.set_language(lang)?;
+    parser.set_language(lang.clone())?;
     Ok(parser)
 }
 
@@ -429,7 +429,7 @@ async fn setup_grit_parser() -> anyhow::Result<MarzanoGritParser> {
             .get()
             .ok_or_else(|| anyhow::anyhow!("Failed to setup GRIT_LANGUAGE"))?
     };
-    parser.set_language(lang)?;
+    parser.set_language(lang.clone())?;
     Ok(MarzanoGritParser::from_initialized_ts_parser(parser))
 }
 

@@ -60,6 +60,7 @@
   {
     "type": "document",
     "named": true,
+    "root": true,
     "fields": {
       "value": {
         "multiple": false,
@@ -194,7 +195,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "escape_sequence",

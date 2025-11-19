@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "go",
   "word": "_identifier",
   "rules": {
@@ -7306,6 +7307,6 @@
     "_simple_type",
     "_statement",
     "_simple_statement"
-  ]
+  ],
+  "reserved": {}
 }
-

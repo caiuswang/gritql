@@ -414,12 +414,17 @@ static bool parse_fenced_code_block(Scanner *s, const char delimiter,
     // Also it cannot be indented more than 3 spaces.
     if ((delimiter == '`' ? valid_symbols[FENCED_CODE_BLOCK_END_BACKTICK]
                           : valid_symbols[FENCED_CODE_BLOCK_END_TILDE]) &&
-        s->indentation < 4 && level >= s->fenced_code_block_delimiter_length &&
-        (lexer->lookahead == '\n' || lexer->lookahead == '\r')) {
-        s->fenced_code_block_delimiter_length = 0;
-        lexer->result_symbol = delimiter == '`' ? FENCED_CODE_BLOCK_END_BACKTICK
-                                                : FENCED_CODE_BLOCK_END_TILDE;
-        return true;
+        s->indentation < 4 && level >= s->fenced_code_block_delimiter_length) {
+        while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
+            advance(s, lexer);
+        }
+        if (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
+            s->fenced_code_block_delimiter_length = 0;
+            lexer->result_symbol = delimiter == '`'
+                                       ? FENCED_CODE_BLOCK_END_BACKTICK
+                                       : FENCED_CODE_BLOCK_END_TILDE;
+            return true;
+        }
     }
     // If this could be the start of a fenced code block, check if the info
     // string contains any backticks.
@@ -1584,7 +1589,7 @@ unsigned tree_sitter_markdown_external_scanner_serialize(void *payload,
 }
 
 void tree_sitter_markdown_external_scanner_deserialize(void *payload,
-                                                       char *buffer,
+                                                       const char *buffer,
                                                        unsigned length) {
     Scanner *scanner = (Scanner *)payload;
     deserialize(scanner, buffer, length);

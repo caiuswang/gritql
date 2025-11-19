@@ -3575,6 +3575,10 @@
         "required": true,
         "types": [
           {
+            "type": ";",
+            "named": false
+          },
+          {
             "type": "expression_statement",
             "named": true
           }
@@ -3584,6 +3588,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "expression_statement",
             "named": true
@@ -6366,6 +6374,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {
       "source_unit": {
         "multiple": true,
@@ -9807,6 +9816,10 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "<<=",
     "named": false
   },
@@ -10096,7 +10109,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "constant",
@@ -10556,11 +10570,11 @@
   },
   {
     "type": "not",
-    "named": true
+    "named": false
   },
   {
     "type": "not",
-    "named": false
+    "named": true
   },
   {
     "type": "not_equal",
@@ -10888,6 +10902,10 @@
   },
   {
     "type": "uint96",
+    "named": false
+  },
+  {
+    "type": "unchecked",
     "named": false
   },
   {

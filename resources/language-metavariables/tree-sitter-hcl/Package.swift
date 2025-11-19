@@ -8,32 +8,29 @@ let package = Package(
     products: [
         .library(name: "TreeSitterHCL", targets: ["TreeSitterHCL"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "SwiftTreeSitter", url: "https://github.com/tree-sitter/swift-tree-sitter", from: "0.25.0"),
+    ],
     targets: [
-        .target(name: "TreeSitterHCL",
-                path: ".",
-                exclude: [
-                    "binding.gyp",
-                    "bindings",
-                    "Cargo.toml",
-                    "CHANGELOG.md",
-                    "docs",
-                    "example",
-                    "grammar.js",
-                    "LICENSE",
-                    "package.json",
-                    "README.md",
-                    "shell.nix",
-                    "src/grammar.json",
-                    "src/node-types.json",
-                    "test",
-                ],
-                sources: [
-                    "src/parser.c",
-                    "src/scanner.c",
-                ],
-                publicHeadersPath: "bindings/swift",
-                cSettings: [.headerSearchPath("src")],
-                linkerSettings: [.linkedLibrary("c++")])
-    ]
+        .target(
+            name: "TreeSitterHCL",
+            dependencies: [],
+            path: ".",
+            sources: [
+                "src/parser.c",
+                "src/scanner.c"
+            ],
+            publicHeadersPath: "bindings/swift",
+            cSettings: [.headerSearchPath("src")]
+        ),
+        .testTarget(
+            name: "TreeSitterHCLTests",
+            dependencies: [
+                "SwiftTreeSitter",
+                "TreeSitterHCL",
+            ],
+            path: "bindings/swift/TreeSitterHCLTests"
+        )
+    ],
+    cLanguageStandard: .c11
 )

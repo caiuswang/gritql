@@ -2243,6 +2243,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {
       "statements": {
         "multiple": true,
@@ -2937,7 +2938,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "const",

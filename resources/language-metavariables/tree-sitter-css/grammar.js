@@ -1,4 +1,5 @@
-module.exports = grammar({
+// module.exports = grammar({
+export default grammar({
   name: 'css',
 
   extras: ($) => [/\s/, $.comment],

@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-solidity"
 description = "Solidity grammar for the tree-sitter parsing library"
-version = "0.0.3"
+version = "1.2.13"
 keywords = ["incremental", "parsing", "Solidity"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/JoranHonig/tree-sitter-solidity"
@@ -14,13 +14,19 @@ include = [
   "grammar.js",
   "queries/*",
   "src/*",
+  "tree-sitter.json",
+  "LICENSE",
 ]
 
 [lib]
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "~0.20"
+tree-sitter-language = "0.1"
+tree-sitter = "0.25.10"
 
 [build-dependencies]
-cc = "1.0"
+cc = "1.1"
+
+[dev-dependencies]
+tree-sitter = "0.25.10"

@@ -20,7 +20,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_rust::language().into()
+    TSLanguage::from(tree_sitter_rust::LANGUAGE)
 }
 
 #[derive(Debug, Clone, Copy)]
