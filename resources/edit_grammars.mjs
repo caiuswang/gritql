@@ -226,7 +226,7 @@ async function buildLanguage(language) {
       let cargoContent = await fs.readFile(cargoPath, "utf8");
       cargoContent = cargoContent.replace(
         /tree-sitter = ".*"/g,
-        'tree-sitter = "~0.20"'
+        'tree-sitter = "0.25.10"'
       );
       await fs.writeFile(cargoPath, cargoContent);
       log(`Updated ${cargoPath}`);

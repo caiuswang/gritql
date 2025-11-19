@@ -22,7 +22,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_css::language().into()
+    tree_sitter_css::LANGUAGE.into()
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -156,7 +156,7 @@ mod tests {
         let snippet = r#"var(--red)"#;
         let lang = Css::new(None);
         let mut parser = tree_sitter::Parser::new().unwrap();
-        parser.set_language(lang.get_ts_language()).unwrap();
+        parser.set_language(lang.get_ts_language().clone()).unwrap();
         let snippets = lang.parse_snippet_contexts(snippet);
         let nodes = nodes_from_indices(&snippets);
         assert!(!nodes.is_empty());

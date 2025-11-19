@@ -12,9 +12,10 @@ pub struct MarzanoGritParser {
 impl MarzanoGritParser {
     #[cfg(feature = "grit-parser")]
     pub fn new() -> Result<Self> {
+
         let mut parser = TSParser::new().unwrap();
         parser
-            .set_language(&tree_sitter_gritql::language().into())
+            .set_language(tree_sitter_gritql::language().into())
             .expect("failed to load grit language");
         Ok(Self { parser })
     }

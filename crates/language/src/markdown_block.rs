@@ -17,7 +17,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_md::language().into()
+    TSLanguage::from(tree_sitter_md::LANGUAGE)
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -104,7 +104,7 @@ abstract: |
         let mut parser = Parser::new().unwrap();
         let markdown_block = MarkdownBlock::new(None);
         parser
-            .set_language(MarkdownBlock::get_ts_language(&markdown_block))
+            .set_language(MarkdownBlock::get_ts_language(&markdown_block).clone())
             .unwrap();
         let lang = MarkdownBlock::new(None);
         let snippets = lang.parse_snippet_contexts(snippet);

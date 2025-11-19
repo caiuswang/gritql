@@ -43,7 +43,7 @@ pub fn make_md_parser() -> Result<Parser> {
     let mut parser = Parser::new().unwrap();
     let language = marzano_language::markdown_block::MarkdownBlock::new(None);
     parser
-        .set_language(language.get_ts_language())
+        .set_language(language.get_ts_language().clone())
         .with_context(|| "Failed to load markdown grammar")?;
     Ok(parser)
 }

@@ -23,7 +23,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_php::language_php().into()
+    TSLanguage::from(tree_sitter_php::LANGUAGE_PHP)
 }
 
 #[derive(Debug, Clone, Copy)]

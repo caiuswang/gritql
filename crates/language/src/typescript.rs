@@ -25,7 +25,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_typescript::language_typescript().into()
+    TSLanguage::from(tree_sitter_typescript::LANGUAGE_TYPESCRIPT)
 }
 
 #[derive(Debug, Clone, Copy)]

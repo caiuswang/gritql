@@ -20,7 +20,7 @@ fn built_in_language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn built_in_language() -> TSLanguage {
-    tree_sitter_yaml::language().into()
+    TSLanguage::from(tree_sitter_yaml::LANGUAGE)
 }
 
 #[derive(Debug, Clone, Copy)]

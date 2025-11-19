@@ -16,7 +16,7 @@ fn language() -> TSLanguage {
 }
 #[cfg(feature = "builtin-parser")]
 fn language() -> TSLanguage {
-    tree_sitter_solidity::language().into()
+    TSLanguage::from(tree_sitter_solidity::LANGUAGE)
 }
 
 #[derive(Debug, Clone, Copy)]
