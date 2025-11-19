@@ -64,7 +64,8 @@
 	url = https://github.com/getgrit/web-tree-sitter.git
 [submodule "tree-sitter-facade"]
 	path = vendor/tree-sitter-facade
-	url = https://github.com/getgrit/tree-sitter-facade.git
+	url = https://github.com/caiuswang/tree-sitter-facade.git
+    branch = v0.25.10
 [submodule "tree-sitter-gritql"]
 	path = vendor/tree-sitter-gritql
 	url = https://github.com/caiuswang/tree-sitter-gritql.git
