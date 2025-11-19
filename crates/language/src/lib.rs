@@ -89,3 +89,4 @@ pub mod tsx;
 pub mod typescript;
 pub mod vue;
 pub mod yaml;
+pub mod xml;

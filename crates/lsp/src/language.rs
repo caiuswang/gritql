@@ -55,6 +55,7 @@ pub fn target_language_to_language_id(target_language: TargetLanguage) -> &'stat
         TargetLanguage::Toml(_) => "toml",
         TargetLanguage::Php(_) => "php",
         TargetLanguage::PhpOnly(_) => "php",
+        TargetLanguage::Xml(_) => "xml",
     }
 }
 
