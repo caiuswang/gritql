@@ -45,42 +45,42 @@ impl Rust {
             vec![
                 (
                     language.id_for_node_kind("struct_item", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("union_item", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("enum_item", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("function_item", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("function_signature_item", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("visibility", true),
-                    language.field_id_for_name("visibility").unwrap(),
+                    language.field_id_for_name("visibility").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("function_item", true),
-                    language.field_id_for_name("type_parameters").unwrap(),
+                    language.field_id_for_name("type_parameters").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
                 (
                     language.id_for_node_kind("function_signature_item", true),
-                    language.field_id_for_name("type_parameters").unwrap(),
+                    language.field_id_for_name("type_parameters").unwrap().get(),
                     FieldExpectationCondition::OnlyIf(vec![""]),
                 ),
             ]

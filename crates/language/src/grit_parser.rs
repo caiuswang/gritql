@@ -4,6 +4,7 @@ use grit_util::{traverse, AnalysisLogBuilder, AnalysisLogs, Ast, AstNode, Order}
 use regex::Regex;
 use std::path::Path;
 use tree_sitter::Parser as TSParser;
+use tree_sitter::Language as TSLanguage;
 
 pub struct MarzanoGritParser {
     parser: TSParser,
@@ -15,7 +16,7 @@ impl MarzanoGritParser {
 
         let mut parser = TSParser::new().unwrap();
         parser
-            .set_language(tree_sitter_gritql::language().into())
+            .set_language(TSLanguage::from(tree_sitter_gritql::language()))
             .expect("failed to load grit language");
         Ok(Self { parser })
     }

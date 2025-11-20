@@ -1,3 +1,5 @@
+use std::num::NonZeroU16;
+
 use marzano_language::language::{Field, NodeTypes};
 use serde_json::{json, Value};
 use tree_sitter::Node;
@@ -42,8 +44,11 @@ pub fn tree_sitter_node_to_json(
 
     let mut processed_child_node_ids: Vec<usize> = vec![];
     for field in node_fields {
+        if field.id() == 0 {
+            continue;
+        }
         let children_for_field: Vec<Node> =
-            node.children_by_field_id(field.id(), &mut cursor).collect();
+            node.children_by_field_id(NonZeroU16::new(field.id()).unwrap(), &mut cursor).collect();
         if children_for_field.is_empty() {
             continue;
         }
