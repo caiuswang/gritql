@@ -46,7 +46,8 @@
 	url = https://github.com/tree-sitter-grammars/tree-sitter-yaml.git
 [submodule "resources/language-submodules/tree-sitter-hcl"]
 	path = resources/language-submodules/tree-sitter-hcl
-	url = https://github.com/MichaHoffmann/tree-sitter-hcl
+	url = https://github.com/caiuswang/tree-sitter-hcl
+    branch = v0.25.10
 [submodule "resources/language-submodules/tree-sitter-markdown"]
 	path = resources/language-submodules/tree-sitter-markdown
 	url = https://github.com/caiuswang/tree-sitter-markdown.git
