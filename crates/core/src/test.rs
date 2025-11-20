@@ -16790,3 +16790,52 @@ fn csharp_throw_exception() {
     })
     .unwrap();
 }
+
+#[test]
+fn xml_replace_tag_content_value() {
+    run_test_expected({
+        TestArgExpected {
+            pattern: r#"
+                |language xml
+                |    file($body) where {
+                |        $body <: contains bubble() element() as $e where {
+                |            $e <: contains bubble($e) STag() as $stag where {
+                |                $stag <: contains bubble($e) Name() as $name where {
+                |                    $name <: `modelVersion`,
+                |                    $e <: contains bubble() content() as $content where {
+                |                        $content <: `4.0.0`,
+                |                        $content => `5.0.0`
+                |                    }
+                |                }
+                |            }
+                |        }
+                |    }
+                |"#
+            .trim_margin()
+            .unwrap(),
+            source: r#"
+                |<?xml version="1.0" encoding="UTF-8"?>
+                |<project xmlns="http://maven.apache.org/POM/4.0.0"
+                |     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                |xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                |    <modelVersion>4.0.0</modelVersion>
+                |</project>
+                |"#
+            .trim_margin()
+            .unwrap(),
+            expected: r#"
+                |<?xml version="1.0" encoding="UTF-8"?>
+                |<project xmlns="http://maven.apache.org/POM/4.0.0"
+                |     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                |xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                |    <modelVersion>5.0.0</modelVersion>
+                |</project>
+                |"#
+            .trim_margin()
+            .unwrap(),
+        }
+    })
+    .unwrap();
+}
+
+
