@@ -16,7 +16,7 @@ use grit_util::{AnalysisLogBuilder, AnalysisLogs, CodeRange, Language};
 use itertools::Itertools;
 use rand::prelude::SliceRandom;
 use rand::Rng;
-use std::collections::{BTreeMap, HashMap};
+use std::{borrow::Cow, collections::{BTreeMap, HashMap, HashSet}};
 
 // todo we can probably use a macro to generate a function that takes a vec and
 // and calls the input function with the vec args unpacked.
@@ -201,8 +201,10 @@ impl BuiltIns {
             BuiltInFunction::new("capitalize", vec!["string"], Box::new(capitalize_fn)),
             BuiltInFunction::new("lowercase", vec!["string"], Box::new(lowercase_fn)),
             BuiltInFunction::new("uppercase", vec!["string"], Box::new(uppercase_fn)),
+            BuiltInFunction::new("camelToSnake", vec!["string"], Box::new(camel_to_snake_fn)),
             BuiltInFunction::new("text", vec!["string", "linearize"], Box::new(text_fn)),
             BuiltInFunction::new("trim", vec!["string", "trim_chars"], Box::new(trim_fn)),
+            BuiltInFunction::new("stripQuote", vec!["variable", "splitter"], Box::new(strip_quote_fn)).as_predicate_or_pattern(),
             BuiltInFunction::new("join", vec!["list", "separator"], Box::new(join_fn)),
             BuiltInFunction::new("distinct", vec!["list"], Box::new(distinct_fn)),
             BuiltInFunction::new("length", vec!["target"], Box::new(length_fn)),
@@ -297,6 +299,76 @@ fn uppercase_fn<'a>(
         None => return Err(anyhow!("uppercase takes 1 argument")),
     };
     Ok(ResolvedPattern::from_string(s.to_uppercase()))
+}
+
+fn strip_quote_fn<'a>(
+    args: &'a [Option<Pattern<MarzanoQueryContext>>],
+    context: &'a MarzanoContext<'a>,
+    state: &mut State<'a, MarzanoQueryContext>,
+    logs: &mut AnalysisLogs,
+) -> Result<MarzanoResolvedPattern<'a>> {
+    let args = MarzanoResolvedPattern::from_patterns(args, state, context, logs)?;
+    if args.len() != 2 {
+        return Err(anyhow!("stripeQuote take 2 argument"))
+    }
+    let quote_list = match &args[1] {
+        // Some(resolved_pattern) => resolved_pattern.text(&state.files, context.language)?,
+            Some(resolved_pattern) => {
+            match resolved_pattern.get_list_items() {
+                Some(iter) => iter.map(|i| i.text(&state.files, context.language).unwrap()).collect::<Vec<Cow<_>>>(),
+                None => return Err(anyhow!("stripQuote second param should a variable with type of list"))
+            }
+        }
+        None => return Err(anyhow!("stripQuote take 2 argument")),
+        
+    };
+
+    let s = match &args[0] {
+        Some(resolved_pattern) => resolved_pattern.text(&state.files, context.language)?,
+        None => return Err(anyhow!("stripQuote take 2 argument")),
+    };
+    // let _quote_str = quote_list.to_string();
+    // vec to set
+    let chars : Vec<char> = s.chars().collect();
+    let quote_str_list = quote_list.iter().map(|f| f.to_string()).collect::<Vec<String>>();
+    let mut iter = chars.iter();
+    let mut result = String::from("");
+    while let Some(ch) = iter.next() {
+        if !quote_str_list.contains(&ch.to_string()) {
+            result.push(*ch);
+        }
+    }
+    Ok(ResolvedPattern::from_string(result))
+}
+
+fn camel_to_snake_fn<'a>(
+    args: &'a [Option<Pattern<MarzanoQueryContext>>],
+    context: &'a MarzanoContext<'a>,
+    state: &mut State<'a, MarzanoQueryContext>,
+    logs: &mut AnalysisLogs,
+) -> Result<MarzanoResolvedPattern<'a>> {
+    let args = MarzanoResolvedPattern::from_patterns(args, state, context, logs)?;
+
+    let s = match &args[0] {
+        Some(resolved_pattern) => resolved_pattern.text(&state.files, context.language())?,
+        None => return Err(anyhow!("uppercase takes 1 argument")),
+    };
+    // iterate s, find if it's uppercase, if it is, then add a _ before it
+    let chars: Vec<char>  = s.chars().collect::<Vec<char>>();
+    if chars.len() == 0 {
+        return Ok(ResolvedPattern::from_string(s.to_string()));
+    }
+    let mut result = String::from(chars.get(0).unwrap().to_string());
+    for i in 1..chars.len() {
+        let ch = chars.get(i).unwrap();
+        if ch.is_uppercase() {
+            result.push('_');
+            result.push_str(ch.to_lowercase().to_string().as_str());
+        } else {
+            result.push(*ch);
+        }
+    }
+    Ok(ResolvedPattern::from_string(result))
 }
 
 fn text_fn<'a>(

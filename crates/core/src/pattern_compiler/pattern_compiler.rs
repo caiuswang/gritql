@@ -24,6 +24,7 @@ use super::{
     list_compiler::ListCompiler,
     list_index_compiler::ListIndexCompiler,
     log_compiler::LogCompiler,
+    strip_quote_compiler::StripQuoteCompiler,
     map_compiler::MapCompiler,
     maybe_compiler::MaybeCompiler,
     modulo_compiler::ModuloCompiler,
@@ -231,6 +232,9 @@ impl NodeCompiler for PatternCompiler {
             ))),
             "log" => Ok(Pattern::CallBuiltIn(Box::new(
                 LogCompiler::from_node_with_rhs(node, context, is_rhs)?,
+            ))),
+            "stripQuote" => Ok(Pattern::CallBuiltIn(Box::new(
+                StripQuoteCompiler::from_node_with_rhs(node, context, is_rhs)?,
             ))),
             "range" => Ok(Pattern::Range(RangeCompiler::from_node_with_rhs(
                 node, context, is_rhs,

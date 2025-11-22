@@ -2,7 +2,7 @@ use super::{
     accumulate_compiler::AccumulateCompiler, and_compiler::PrAndCompiler,
     any_compiler::PrAnyCompiler, assignment_compiler::AssignmentCompiler,
     call_compiler::PrCallCompiler, compiler::NodeCompilationContext, equal_compiler::EqualCompiler,
-    if_compiler::PrIfCompiler, log_compiler::LogCompiler, match_compiler::MatchCompiler,
+    if_compiler::PrIfCompiler, log_compiler::LogCompiler, strip_quote_compiler::StripQuoteCompiler, match_compiler::MatchCompiler,
     maybe_compiler::PrMaybeCompiler, node_compiler::NodeCompiler, not_compiler::PrNotCompiler,
     or_compiler::PrOrCompiler, predicate_return_compiler::PredicateReturnCompiler,
     rewrite_compiler::RewriteCompiler,
@@ -41,6 +41,9 @@ impl NodeCompiler for PredicateCompiler {
                 node, context,
             )?))),
             "log" => Ok(Predicate::CallBuiltIn(Box::new(LogCompiler::from_node(
+                node, context,
+            )?))),
+            "stripQuote" => Ok(Predicate::CallBuiltIn(Box::new(StripQuoteCompiler::from_node(
                 node, context,
             )?))),
             "predicateMatch" => Ok(Predicate::Match(Box::new(MatchCompiler::from_node(

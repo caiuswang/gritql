@@ -173,6 +173,9 @@ pub fn extract_body_pattern<Q: QueryContext>(
         Pattern::CallBuiltIn(call_built_in) if call_built_in.name == "log" => {
             Ok(Some(Pattern::Top))
         }
+        Pattern::CallBuiltIn(call_built_in) if call_built_in.name == "stripQuote" => {
+            Ok(Some(Pattern::Top))
+        }
 
         Pattern::Add(add) => {
             let Some(lhs) = extract_body_pattern(&add.lhs, matching_body)? else {
@@ -368,6 +371,9 @@ impl<Q: QueryContext> BodyPatternExtractor<Q> for Predicate<Q> {
 
             Predicate::Rewrite(rw) => extract_body_pattern(&rw.left, false),
             Predicate::CallBuiltIn(call_built_in) if call_built_in.name == "log" => {
+                Ok(Some(Pattern::Top))
+            }
+            Predicate::CallBuiltIn(call_built_in) if call_built_in.name == "stripQuote" => {
                 Ok(Some(Pattern::Top))
             }
 

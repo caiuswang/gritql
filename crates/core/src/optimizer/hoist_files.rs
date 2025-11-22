@@ -62,6 +62,9 @@ pub fn extract_filename_pattern<Q: QueryContext>(
         Pattern::CallBuiltIn(call_built_in) if call_built_in.name == "log" => {
             Ok(Some(Pattern::Top))
         }
+        Pattern::CallBuiltIn(call_built_in) if call_built_in.name == "stripQuote" => {
+            Ok(Some(Pattern::Top))
+        }
 
         Pattern::Add(add) => {
             let Some(lhs) = extract_filename_pattern(&add.lhs)? else {
@@ -254,6 +257,9 @@ impl<Q: QueryContext> FilenamePatternExtractor<Q> for Predicate<Q> {
 
             Predicate::Rewrite(rw) => extract_filename_pattern(&rw.left),
             Predicate::CallBuiltIn(call_built_in) if call_built_in.name == "log" => {
+                Ok(Some(Pattern::Top))
+            }
+            Predicate::CallBuiltIn(call_built_in) if call_built_in.name == "stripQuote" => {
                 Ok(Some(Pattern::Top))
             }
 

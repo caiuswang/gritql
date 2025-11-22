@@ -184,6 +184,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -387,6 +391,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -620,6 +628,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -641,6 +653,22 @@
           },
           {
             "type": "within",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "backtickSnippet",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "snippetContent",
             "named": true
           }
         ]
@@ -829,6 +857,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -1140,6 +1172,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -1343,6 +1379,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -1555,6 +1595,10 @@
           "named": true
         },
         {
+          "type": "stripQuote",
+          "named": true
+        },
+        {
           "type": "subOperation",
           "named": true
         },
@@ -1579,6 +1623,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "doubleQuoteSnippet",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "snippetContent",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1763,6 +1823,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -1979,6 +2043,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -2242,6 +2310,10 @@
           {
             "type": "predicateRewrite",
             "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
           }
         ]
       }
@@ -2489,6 +2561,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -2692,6 +2768,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -2912,6 +2992,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -3289,6 +3373,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -3501,6 +3589,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -3704,6 +3796,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -3919,6 +4015,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -4122,6 +4222,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -4347,6 +4451,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -4550,6 +4658,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -4795,6 +4907,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -4998,6 +5114,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -5210,6 +5330,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -5429,6 +5553,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -5645,6 +5773,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -5854,6 +5986,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -6079,6 +6215,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -6291,6 +6431,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -6494,6 +6638,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -6773,6 +6921,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -6985,6 +7137,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -7100,6 +7256,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -7282,6 +7442,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -7494,6 +7658,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -7719,6 +7887,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -7931,6 +8103,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -8140,6 +8316,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -8359,6 +8539,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -8575,6 +8759,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -8787,6 +8975,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -8902,6 +9094,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -9103,6 +9299,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -9229,6 +9429,10 @@
           {
             "type": "predicateRewrite",
             "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
           }
         ]
       }
@@ -9332,6 +9536,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -9541,6 +9749,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -9736,6 +9948,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -9934,6 +10150,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -10159,6 +10379,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -10381,6 +10605,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -10503,6 +10731,10 @@
           {
             "type": "predicateRewrite",
             "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
           }
         ]
       },
@@ -10597,6 +10829,10 @@
           {
             "type": "predicateRewrite",
             "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
           }
         ]
       },
@@ -10690,6 +10926,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -10888,6 +11128,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -11110,6 +11354,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -11383,6 +11631,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -11505,6 +11757,10 @@
           {
             "type": "predicateRewrite",
             "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
           }
         ]
       }
@@ -11604,6 +11860,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -11805,6 +12065,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -11930,6 +12194,10 @@
           },
           {
             "type": "predicateRewrite",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           }
         ]
@@ -12118,6 +12386,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -12353,6 +12625,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -12420,6 +12696,22 @@
         "types": [
           {
             "type": "intConstant",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rawBacktickSnippet",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "snippetContent",
             "named": true
           }
         ]
@@ -12663,6 +12955,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -12866,6 +13162,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -13082,6 +13382,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -13310,6 +13614,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -13549,6 +13857,10 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -13580,6 +13892,46 @@
         "types": [
           {
             "type": "version",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "stripQuote",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      },
+      "spliter": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "variable",
             "named": true
           }
         ]
@@ -13768,6 +14120,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -13974,6 +14330,10 @@
           },
           {
             "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
             "named": true
           },
           {
@@ -14204,6 +14564,220 @@
             "named": true
           },
           {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
+            "type": "subOperation",
+            "named": true
+          },
+          {
+            "type": "top",
+            "named": true
+          },
+          {
+            "type": "undefined",
+            "named": true
+          },
+          {
+            "type": "underscore",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          },
+          {
+            "type": "within",
+            "named": true
+          }
+        ]
+      },
+      "until": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "addOperation",
+            "named": true
+          },
+          {
+            "type": "assignmentAsPattern",
+            "named": true
+          },
+          {
+            "type": "booleanConstant",
+            "named": true
+          },
+          {
+            "type": "bottom",
+            "named": true
+          },
+          {
+            "type": "bubble",
+            "named": true
+          },
+          {
+            "type": "codeSnippet",
+            "named": true
+          },
+          {
+            "type": "divOperation",
+            "named": true
+          },
+          {
+            "type": "dot",
+            "named": true
+          },
+          {
+            "type": "doubleConstant",
+            "named": true
+          },
+          {
+            "type": "every",
+            "named": true
+          },
+          {
+            "type": "files",
+            "named": true
+          },
+          {
+            "type": "intConstant",
+            "named": true
+          },
+          {
+            "type": "like",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "listIndex",
+            "named": true
+          },
+          {
+            "type": "log",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "mapAccessor",
+            "named": true
+          },
+          {
+            "type": "modOperation",
+            "named": true
+          },
+          {
+            "type": "mulOperation",
+            "named": true
+          },
+          {
+            "type": "nodeLike",
+            "named": true
+          },
+          {
+            "type": "patternAccumulate",
+            "named": true
+          },
+          {
+            "type": "patternAfter",
+            "named": true
+          },
+          {
+            "type": "patternAnd",
+            "named": true
+          },
+          {
+            "type": "patternAny",
+            "named": true
+          },
+          {
+            "type": "patternAs",
+            "named": true
+          },
+          {
+            "type": "patternBefore",
+            "named": true
+          },
+          {
+            "type": "patternContains",
+            "named": true
+          },
+          {
+            "type": "patternIfElse",
+            "named": true
+          },
+          {
+            "type": "patternIncludes",
+            "named": true
+          },
+          {
+            "type": "patternLimit",
+            "named": true
+          },
+          {
+            "type": "patternMaybe",
+            "named": true
+          },
+          {
+            "type": "patternNot",
+            "named": true
+          },
+          {
+            "type": "patternOr",
+            "named": true
+          },
+          {
+            "type": "patternOrElse",
+            "named": true
+          },
+          {
+            "type": "patternWhere",
+            "named": true
+          },
+          {
+            "type": "range",
+            "named": true
+          },
+          {
+            "type": "regexPattern",
+            "named": true
+          },
+          {
+            "type": "rewrite",
+            "named": true
+          },
+          {
+            "type": "sequential",
+            "named": true
+          },
+          {
+            "type": "some",
+            "named": true
+          },
+          {
+            "type": "stringConstant",
+            "named": true
+          },
+          {
+            "type": "stripQuote",
+            "named": true
+          },
+          {
             "type": "subOperation",
             "named": true
           },
@@ -14241,6 +14815,10 @@
   },
   {
     "type": "!=",
+    "named": false
+  },
+  {
+    "type": "\"",
     "named": false
   },
   {
@@ -14332,6 +14910,10 @@
     "named": false
   },
   {
+    "type": "`",
+    "named": false
+  },
+  {
     "type": "after",
     "named": false
   },
@@ -14354,10 +14936,6 @@
   {
     "type": "ast",
     "named": false
-  },
-  {
-    "type": "backtickSnippet",
-    "named": true
   },
   {
     "type": "before",
@@ -14404,8 +14982,8 @@
     "named": true
   },
   {
-    "type": "doubleQuoteSnippet",
-    "named": true
+    "type": "elixir",
+    "named": false
   },
   {
     "type": "else",
@@ -14469,6 +15047,10 @@
   },
   {
     "type": "json",
+    "named": false
+  },
+  {
+    "type": "kotlin",
     "named": false
   },
   {
@@ -14560,8 +15142,8 @@
     "named": false
   },
   {
-    "type": "rawBacktickSnippet",
-    "named": true
+    "type": "raw`",
+    "named": false
   },
   {
     "type": "regex",
@@ -14588,6 +15170,10 @@
     "named": true
   },
   {
+    "type": "snippetContent",
+    "named": true
+  },
+  {
     "type": "sol",
     "named": false
   },
@@ -14597,6 +15183,10 @@
   },
   {
     "type": "some",
+    "named": false
+  },
+  {
+    "type": "spliter",
     "named": false
   },
   {
@@ -14614,6 +15204,10 @@
   {
     "type": "stringConstant",
     "named": true
+  },
+  {
+    "type": "stripQuote(",
+    "named": false
   },
   {
     "type": "toml",
@@ -14641,11 +15235,11 @@
   },
   {
     "type": "variable",
-    "named": false
+    "named": true
   },
   {
     "type": "variable",
-    "named": true
+    "named": false
   },
   {
     "type": "where",
@@ -14653,6 +15247,10 @@
   },
   {
     "type": "within",
+    "named": false
+  },
+  {
+    "type": "xml",
     "named": false
   },
   {
@@ -14665,10 +15263,6 @@
   },
   {
     "type": "}",
-    "named": false
-  },
-  {
-    "type": "xml",
     "named": false
   }
 ]
